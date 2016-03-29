@@ -1,0 +1,95 @@
+body {
+  background: #ffe;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12pt;
+}
+
+@mixin slider-button {
+  color: white;
+  background: #666;
+
+  float: left;
+  border-radius: 50%;
+
+  line-height: 24px;
+  font-size: 19px;
+  text-align: center;
+
+  height: 24px;
+  width: 24px;
+  cursor: pointer;
+  margin: 8px 0 auto 10px;
+
+  &:hover {
+    background: #888;
+  }
+}
+
+.slider {
+  position: relative;
+
+  .images img {
+    position: absolute;
+    opacity: 0;
+  }
+
+  .control-panel {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.6);
+
+    bottom: 15px;
+    left: 15px;
+    right: 15px;
+    border-radius: 3px;
+    font-size: 14px;
+    height: 40px;
+
+    .prev {
+      @include slider-button;
+
+      &:after {
+        content: '«';
+      }
+    }
+
+    .next {
+      @include slider-button;
+
+      &:after {
+        content: '»';
+      }
+    }
+
+    .title {
+      color: white;
+      margin-left: 78px;
+      margin-right: 170px;
+      vertical-align: middle;
+      height: 40px;
+      line-height: 40px;
+      overflow-y: hidden;
+      font-size: 12px;
+
+      & > span {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 1em;
+      }
+    }
+
+    .link {
+      float: right;
+      margin: 8px 10px auto 0;
+      border-radius: 3px;
+      width: 150px;
+      height: 24px;
+      line-height: 24px;
+      text-align: center;
+      font-size: 12px;
+      cursor: pointer;
+
+      background: linear-gradient(to bottom, rgba(255,214,163,1) 0%,rgba(210,115,0,1) 50%,rgba(176,97,0,1) 51%,rgba(255,163,51,1) 100%);
+      text-shadow: 1px 1px rgba(255,255,255,0.3), -1px -1px rgba(0,0,0,0.3);
+    }
+  }
+}
