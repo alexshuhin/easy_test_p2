@@ -19,6 +19,8 @@ import source from 'vinyl-source-stream';
 import buffer from 'vinyl-buffer';
 
 import spy from 'through2-spy';
+import postcss from 'gulp-postcss'
+import autoprefixer from 'autoprefixer'
 
 
 //import rollupJade from './gulp-plugins/rollup-jade';
@@ -84,6 +86,7 @@ gulp.task('css', () => {
   return gulp.src('src/css/app.scss')
     .pipe(plumber(plumberHandler))
     .pipe(sass({outputStyle: production() ? 'compressed' : 'nested'}))
+    .pipe(postcss([ autoprefixer({ browsers: ['> 5%'] }) ]))
     .pipe(rename('application.css'))
     .pipe(gulp.dest(destination));
 });
